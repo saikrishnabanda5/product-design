@@ -1,0 +1,23 @@
+
+.product-services-container{
+    background-color: skyblue;
+}
+
+.button-services{
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.button-heading{
+    color: white;
+    font-weight: lighter;
+}
+.button-services:hover{
+    color:orange
+}
