@@ -13,5 +13,5 @@ export const fetchProductDesign = ()=> (dispatch)=>{
     dispatch({type:ActionTypes.LOADING})
     setTimeout(()=>{
         dispatch(fetchProducts())
-    })
+    },2000)
 }

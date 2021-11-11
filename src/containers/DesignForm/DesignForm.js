@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './index.css'
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const productTypes = [
     {
@@ -37,7 +39,7 @@ const radioInputs = [
 
 
 const DesignForm=()=> {
-
+toast.configure();
 const [form, setForm] = useState({
     name: "",
     email: "",
@@ -56,6 +58,7 @@ const [form, setForm] = useState({
 
 
 const onChangeInput = (event) => {
+ 
     if (event.target.type === 'checkbox' && !event.target.checked) {
         setForm({...form, [event.target.name]: ''});
     } else {
@@ -70,13 +73,13 @@ const validateFormDetails = () => {
     if (form.name !== "" ) {
       errorObject.nameError = "";
     } else {
-      errorObject.nameError = "Please fill name";
+      errorObject.nameError = "Please fill the Name";
     }
 
     if (form.radioInput !== "") {
       errorObject.radioInputError = "";
     } else {
-      errorObject.radioInputError = "Please enter radioInput";
+      errorObject.radioInputError = "Please select an option";
     }
 
     if (form.checkbox === "on") {
@@ -88,7 +91,7 @@ const validateFormDetails = () => {
     if (form.email !== "") {
       errorObject.emailError = "";
     } else {
-      errorObject.emailError = "Please fill email";
+      errorObject.emailError = "Please fill the Email";
     }
 
     if (form.selectItem !== "") {
@@ -99,6 +102,13 @@ const validateFormDetails = () => {
     setValidateForm({ ...validateForm, ...errorObject });
   };
 
+  const notify = () => {
+    const {checkbox,email,name,radioInput,selectItem} = form
+    if(checkbox !== false && email!== "" && name !== "" && radioInput !== "" && selectItem !== ""){
+            toast("Form submitted");
+        };
+  }
+
 
 const options = {
     method:"POST",
@@ -106,8 +116,7 @@ const options = {
     body:JSON.stringify(form)
 }
 
-   const postData = async ()=> {
-       console.log("validateForm",form)
+   const postData = async ()=> {   
     const response = await axios.post('https://fakestoreapi.com', options)
     const data = await response.json()
   }
@@ -183,7 +192,7 @@ const options = {
                 <span className="error-message"> {validateForm.checkboxError} </span>
             )}
             </div>
-            <button className="btn btn-primary"> onSubmitForm </button>
+            <button className="btn btn-primary" onClick={notify}> Submit Form </button>
       </form>
 	)
 }

@@ -39,8 +39,10 @@ function ProductServices() {
     }
     return (
         <React.Fragment>
+        <div className="buttons-container">
             <button className="goback-button" onClick={onProductDesign}>Go Back</button>
             <button className="goback-button" onClick={onShowFormControls}>Click here to post the data</button>
+        </div>
         <div className="product-services-container">
             <h1 className="button-heading">Product Design Services</h1>
             {renderButtons()}

@@ -13,7 +13,6 @@ function ProductDesign() {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.allProducts.loading)
 
-    
     const onGoToProductServices = ()=>{
         history.push('/productservices')
     }
@@ -28,7 +27,7 @@ function ProductDesign() {
                  <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} /> </div>: 
             <>
         <div className="button-container">
-          <button className="goback-button" onClick={onGoToProductServices}>Go to product services</button>
+          <button className="goback-button" onClick={onGoToProductServices}> Click here for product services</button>
          </div>
         <div className="main-container">
             <div className="product-container">
